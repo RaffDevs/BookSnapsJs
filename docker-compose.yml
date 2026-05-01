@@ -1,0 +1,21 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL}
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
+      OCR_SERVICE_URL: http://ocr-service:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - ocr-service
+
+  ocr-service:
+    build:
+      context: ./ocr-service
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
