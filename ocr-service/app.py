@@ -1,6 +1,7 @@
 from io import BytesIO
 
 from fastapi import FastAPI, File, Form, UploadFile
+import numpy as np
 from PIL import Image, ImageOps
 
 app = FastAPI(title="BookSnaps OCR", version="0.1.0")
@@ -70,7 +71,4 @@ def preprocess_image(content: bytes):
     image = Image.open(BytesIO(content)).convert("RGB")
     image = ImageOps.exif_transpose(image)
     image = ImageOps.autocontrast(image)
-    output = BytesIO()
-    image.save(output, format="JPEG", quality=92, optimize=True)
-    output.seek(0)
-    return output.getvalue()
+    return np.array(image)
