@@ -168,7 +168,7 @@ export async function listHighlights(userId: string): Promise<HighlightRecord[]>
         imagePath: highlight.image_path,
         imageUrl: await getSignedImageUrl(highlight.image_path),
         ocrStatus: highlight.ocr_status,
-        ocrLanguage: highlight.ocr_language ?? "pt,en",
+      ocrLanguage: highlight.ocr_language ?? "pt",
         ocrBlocks: Array.isArray(highlight.ocr_blocks) ? highlight.ocr_blocks : [],
         capturedAt: highlight.captured_at,
         createdAt: highlight.created_at,

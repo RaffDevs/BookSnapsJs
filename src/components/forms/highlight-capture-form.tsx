@@ -145,7 +145,7 @@ export function HighlightCaptureForm({ books, initialBookId }: Props) {
               />
             </div>
 
-            <input type="hidden" name="ocrLanguage" value="pt,en" />
+            <input type="hidden" name="ocrLanguage" value="pt" />
 
             {message ? (
               <p className="rounded-[1.25rem] bg-muted/70 px-4 py-3 text-sm text-muted-foreground">

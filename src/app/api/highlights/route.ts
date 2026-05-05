@@ -19,7 +19,7 @@ export async function POST(request: Request) {
       pageNumber: Number(formData.get("pageNumber") ?? 0),
       userNote: String(formData.get("userNote") ?? ""),
       image: file,
-      ocrLanguage: String(formData.get("ocrLanguage") ?? "pt,en"),
+      ocrLanguage: String(formData.get("ocrLanguage") ?? "pt"),
     });
 
     return NextResponse.json({ data: highlight }, { status: 201 });

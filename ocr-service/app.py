@@ -9,7 +9,7 @@ ocr_error = None
 try:
     from paddleocr import PaddleOCR
 
-    ocr = PaddleOCR(use_angle_cls=True, lang="latin")
+    ocr = PaddleOCR(use_angle_cls=True, lang="pt")
 except Exception as exc:  # pragma: no cover
     ocr = None
     ocr_error = str(exc)
@@ -27,7 +27,7 @@ def health():
 @app.post("/ocr")
 async def run_ocr(
     image: UploadFile = File(...),
-    language: str = Form("pt,en"),
+    language: str = Form("pt"),
 ):
     content = await image.read()
     prepared = preprocess_image(content)
